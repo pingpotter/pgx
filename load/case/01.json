@@ -1,0 +1,25 @@
+{
+    "rq_body": {
+        "customer_number": "12111111111",
+        "customer_type": "0702",
+        "account_name": "นางสาวกานดา มาดีไกล",
+        "credit_limit": 100000.00,
+        "credit_term_number": 12,
+        "credit_term_unit": "M",
+        "product_name": "7200120090001",
+        "disbursement_account": "20000002010",
+        "deduction_account": "20000002010",
+        "account_branch": 1,
+        "response_unit": 2,
+        "application_id": "APP0001",
+        "interest": {
+            "interest_index": "MRR",
+            "interest_spread": 12
+        },
+        "payment": {
+            "payment_frequency": 1,
+            "payment_unit": "M",
+            "payment_date": 31
+        }
+    }
+}

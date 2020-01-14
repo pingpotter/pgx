@@ -1,0 +1,36 @@
+version: '3.7'
+networks:
+  shared-network:
+    driver: bridge
+services:
+  api:
+    networks:
+      - shared-network
+    # image: dloan-account_api:1.0
+    build:
+      context: .
+    #   args:
+    #   - PACKAGE_NAME=api
+    #   # - VCS_REF=`git rev-parse HEAD`
+    #   # - BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”`
+      dockerfile: api.dockerfile
+    # env_file:
+    #   - _dev/config/servapi.env
+    depends_on:
+        - pg
+    ports:
+      - "8002:8080"
+    restart: always
+  pg:
+    networks:
+      - shared-network
+    # image: dloan-account_pg:1.0
+    build:
+      context: .
+      dockerfile: migration/postgres.dockerfile
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_MULTIPLE_DATABASES=dloan_account
+    ports:
+      - 5401:5432
